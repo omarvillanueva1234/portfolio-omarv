@@ -49,7 +49,7 @@ body.cur-hover #cur animate{background:#fff}
 /* STAGE */
 #stage{width:100%;height:100vh;overflow:hidden;position:relative}
 #track{display:flex;width:700%;height:100%;will-change:transform;transition:transform .8s cubic-bezier(.77,0,.175,1)}
-.slide{width:calc(100%/7);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:96px 60px 80px;position:relative;overflow:hidden}
+.slide{width:calc(100%/7);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:96px 60px 80px;position:relative;overflow:hidden;box-sizing:border-box}
 .si{width:100%;max-width:1080px}
 
 /* GRID BG */
@@ -94,7 +94,6 @@ body.cur-hover #cur animate{background:#fff}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:pulse 2.2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.5)}}
 
-/* Adjusted typography parameters for pristine execution and display balance */
 .hero-name{font-family:var(--fh);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--t1);margin:22px 0 16px;overflow:hidden;text-transform:none}
 .hero-name .let{display:inline-block;transform:translateY(120%) rotate(4deg);opacity:0;will-change:transform}
 .hero-name .wg{display:inline-block;width:.22em}
@@ -113,7 +112,7 @@ body.cur-hover #cur animate{background:#fff}
 
 .hero-stats{position:absolute;right:60px;bottom:96px;display:flex;flex-direction:column;gap:28px;z-index:2;text-align:right}
 .stat-item{opacity:0;transform:translateX(20px)}
-.sv font-family:var(--fh);font-size:2.7rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--t1)}
+.sv{font-family:var(--fh);font-size:2.7rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--t1)}
 .sv span{color:var(--ac)}
 .sk{font-family:var(--fm);font-size:.58rem;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
 
@@ -185,15 +184,20 @@ body.cur-hover #cur animate{background:#fff}
 .rbtn{padding:11px 22px;border-radius:10px;background:var(--ac);color:#fff;font-family:var(--fb);font-size:.9rem;font-weight:700;border:none;display:flex;align-items:center;gap:7px;white-space:nowrap;pointer-events:none}
 .fnote{font-family:var(--fm);font-size:.58rem;color:var(--t3);letter-spacing:.12em;margin-top:28px;opacity:0}
 
-/* MOBILE */
+/* MOBILE RESPONSIVE OPTIMIZATIONS */
 @media(max-width:968px){
   #nav{padding:16px 24px}
-  .nav-menu{display:none} /* Collapses full menu track under heavy density states */
+  .nav-menu{display:none} 
 }
 @media(max-width:768px){
-  .slide{padding:92px 22px 78px}
+  .slide{
+    padding:110px 22px 90px !important;
+    justify-content:flex-start !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
   .hero-stats{display:none}
-  .about-grid,.skills-grid,.proj-grid,.certs-grid{grid-template-columns:1fr}
+  .about-grid,.skills-grid,.proj-grid,.certs-grid{grid-template-columns:1fr;gap:20px}
   .cgrid{grid-template-columns:1fr}
   .rcard{flex-direction:column;text-align:center}
   #arrows{right:14px}
@@ -261,10 +265,10 @@ body.cur-hover #cur animate{background:#fff}
     <span class="lbl">02 &middot; About</span>
     <h2 class="ttl"><span class="cw"><span class="ci">Testing beyond the </span></span><em>happy path.</em></h2>
     <div class="about-grid">
-      <div class="card tilt-wrap"><span class="card-lbl">Who I Am</span><p class="card-body">Lead SDET with <strong>12+ years</strong> building automation ecosystems from scratch. Acting QA Manager at Sprout Solutions leading <strong>11 SDETs + 11 QA engineers</strong> across the entire product org.</p></div>
-      <div class="card tilt-wrap"><span class="card-lbl">What Sets Me Apart</span><p class="card-body">I architect <strong>Agentic QA frameworks</strong> &mdash; Claude AI agents + MCP that read live Jira tickets, generate test cases, and execute them via Playwright autonomously without human intervention.</p></div>
-      <div class="card tilt-wrap"><span class="card-lbl">My Domain</span><p class="card-body">Deep expertise in <strong>HR &amp; Payroll systems</strong>: complex computation validation, multi-module regression, attendance engine logic, and API-driven data integrity across tightly-coupled business rules.</p></div>
-      <div class="card tilt-wrap"><span class="card-lbl">Leadership Style</span><p class="card-body">I champion <strong>automation-first culture</strong> &mdash; from no-code tools for non-technical QA (cutting dev time 40%) to representing QA strategy in <strong>L10 executive meetings</strong> and SAFe PI Planning.</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">Who I Am</span><p class="card-body">Lead SDET with <strong>12+ years</strong> building automation ecosystems from scratch[cite: 4, 12]. Acting QA Manager at Sprout Solutions leading <strong>11 SDETs + 11 QA engineers</strong> across the entire product org[cite: 19, 21, 22].</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">What Sets Me Apart</span><p class="card-body">I architect <strong>Agentic QA frameworks</strong> &mdash; Claude AI agents + MCP that read live Jira tickets, generate test cases, and execute them via Playwright autonomously without human intervention[cite: 5, 6, 11, 24, 25].</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">My Domain</span><p class="card-body">Deep expertise in <strong>HR &amp; Payroll systems</strong>: complex computation validation, multi-module regression, attendance engine logic, and API-driven data integrity across tightly-coupled business rules[cite: 27].</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">Leadership Style</span><p class="card-body">I champion <strong>automation-first culture</strong> &mdash; from no-code tools for non-technical QA (cutting dev time 40%) [cite: 28] to representing QA strategy in <strong>L10 executive meetings</strong> [cite: 23] and SAFe PI Planning[cite: 38].</p></div>
     </div>
   </div>
 </section>
@@ -292,10 +296,10 @@ body.cur-hover #cur animate{background:#fff}
     <h2 class="ttl" style="font-size:clamp(1.8rem,3.2vw,2.8rem);margin-bottom:28px"><span class="cw"><span class="ci">Where I&rsquo;ve </span></span><em>shipped quality.</em></h2>
     <div class="tl">
       <div class="tl-line"></div>
-      <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">APR 2024 &ndash; PRESENT</div><div class="tl-role">Lead SDET / Acting QA Manager</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Leading 22-person QA org. Architecting Agentic QA (Claude + MCP + Playwright). Cut Payroll regression 17 min &rarr; 5 min enabling 3&times; deploy frequency. Reduced Sales manual prep by 80%. Representing quality roadmap in executive L10 meetings.</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">SEPT 2019 &ndash; APR 2024</div><div class="tl-role">Senior Software Engineer &ndash; Automation Lead &amp; Trainer</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Built web &amp; mobile frameworks with Selenium (Java, Python) + Appium. Created mobile pipeline cutting manual regression 40%. Standardized coding practices. Led QA in SAFe PI Planning.</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">JUL 2018 &ndash; JUL 2019</div><div class="tl-role">Associate Consultant &ndash; Automation Tester &amp; Trainer</div><div class="tl-co">Capgemini Philippines</div><div class="tl-desc">Developed automation scripts from functional test cases. Conducted Selenium training. Built frameworks enhancing efficiency across multiple client engagements.</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">FEB 2015 &ndash; JUL 2018</div><div class="tl-role">Software Engineer &ndash; Automation Test Lead</div><div class="tl-co">Accenture Philippines</div><div class="tl-desc">Led in-sprint automation in Agile teams. Established automation guidelines and coding standards. Drove defect triage and cross-team coordination for faster resolution.</div></div>
+      <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">APR 2024 &ndash; PRESENT</div><div class="tl-role">Lead SDET / Acting QA Manager</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Leading 22-person QA org[cite: 21]. Architecting Agentic QA (Claude + MCP + Playwright)[cite: 24]. Cut Payroll regression 17 min &rarr; 5 min enabling 3&times; deploy frequency[cite: 27]. Reduced Sales manual prep by 80%[cite: 29]. Representing quality roadmap in executive L10 meetings[cite: 23].</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">SEPT 2019 &ndash; APR 2024</div><div class="tl-role">Senior Software Engineer &ndash; Automation Lead &amp; Trainer</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Built web &amp; mobile frameworks with Selenium (Java, Python) + Appium[cite: 33]. Created mobile pipeline cutting manual regression 40%[cite: 36]. Standardized coding practices[cite: 37]. Led QA in SAFe PI Planning[cite: 38].</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">JUL 2018 &ndash; JUL 2019</div><div class="tl-role">Associate Consultant &ndash; Automation Tester &amp; Trainer</div><div class="tl-co">Capgemini Philippines</div><div class="tl-desc">Developed automation scripts from functional test cases[cite: 41]. Conducted Selenium training[cite: 42]. Built frameworks enhancing efficiency across multiple client engagements[cite: 43].</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">FEB 2015 &ndash; JUL 2018</div><div class="tl-role">Software Engineer &ndash; Automation Test Lead</div><div class="tl-co">Accenture Philippines</div><div class="tl-desc">Led in-sprint automation in Agile teams[cite: 46]. Established automation guidelines and coding standards[cite: 47]. Drove defect triage and cross-team coordination for faster resolution[cite: 48].</div></div>
     </div>
   </div>
 </section>
@@ -342,7 +346,7 @@ body.cur-hover #cur animate{background:#fff}
         <a href="mailto:yulomarvillanueva@gmail.com" class="ccard2"><span class="cci">&#9993;&#65039;</span><div><div class="clb">Email</div><div class="cvl">yulomarvillanueva@gmail.com</div></div></a>
         <a href="https://www.linkedin.com/in/yul-omar-villanueva-ctfl-7a15b5185/" target="_blank" class="ccard2"><span class="cci">&#128188;</span><div><div class="clb">LinkedIn</div><div class="cvl">yul-omar-villanueva-ctfl</div></div></a>
         <a href="https://github.com/omarvillanueva1234" target="_blank" class="ccard2"><span class="cci">&#8999;</span><div><div class="clb">GitHub</div><div class="cvl">omarvillanueva1234</div></div></a>
-        <div class="ccard2"><span class="cci">&#128205;</span><div><div class="clb">Location</div><div class="cvl">Pulilan, Bulacan, Philippines</div></div></div>
+        <div class="ccard2"><span class="cci">&#128205;</span><div><div class="clb">Location</div><div class="cvl">Pulilan, Bulacan, Philippines [cite: 2]</div></div></div>
       </div>
       <a href="Yul-Omar-Villanueva.pdf" download class="rcard">
         <div class="rleft"><span class="rico">&#128196;</span><div><div class="rtitle">Download Resume</div><div class="rsub">Yul-Omar-Villanueva.pdf &nbsp;&middot;&nbsp; Lead SDET &middot; ISTQB CTFL</div></div></div>
@@ -371,10 +375,7 @@ const track=document.getElementById('track'),dotsEl=document.getElementById('dot
       bp=document.getElementById('bp'),bn=document.getElementById('bn');
 
 function updateUI(){
-  // Update Dot Indicators
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));
-  
-  // Dynamic Active States for Top Navigation Bar
   document.querySelectorAll('.nav-link').forEach((lnk,i)=>lnk.classList.toggle('active',i===cur));
   
   bp.disabled=cur===0;bn.disabled=cur===N-1;
