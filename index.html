@@ -43,6 +43,9 @@ body.cur-hover #cur animate{background:#fff}
 .nav-link.active{color:var(--ac);font-weight:600;background:var(--ac3)}
 .nav-link.active::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--ac);border-radius:2px;box-shadow:0 0 8px var(--ac)}
 
+/* NAV SQUARE HIGHLIGHTER */
+.nav-sq{position:absolute;width:72px;height:34px;border-radius:8px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);box-shadow:0 0 16px rgba(124,58,237,0.15);pointer-events:none;top:50%;margin-top:-17px;left:148px;z-index:0;transform-origin:center center}
+
 /* PROGRESS BAR */
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--ac),var(--cy));z-index:300;transform-origin:left;transform:scaleX(0);transition:transform .6s cubic-bezier(.77,0,.175,1)}
 
@@ -214,7 +217,21 @@ body.cur-hover #cur animate{background:#fff}
 <div id="cur"></div><div id="cur-r"></div>
 
 <nav id="nav">
-  <div class="nav-logo">YOV<span>.</span></div>
+  <div class="nav-logo" style="display:flex;align-items:center;gap:10px">
+    <svg id="nav-svg" viewBox="0 0 128 128" width="26" height="26" style="flex-shrink:0;overflow:visible">
+      <defs>
+        <filter id="nav-distort" x="-50%" y="-50%" width="200%" height="200%">
+          <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="2" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <polygon id="nav-poly" filter="url(#nav-distort)"
+        points="64 4 119.426 36 119.426 100 64 124 8.574 100 8.574 36"
+        fill="rgba(124,58,237,0.15)" stroke="rgba(124,58,237,0.85)" stroke-width="2"/>
+    </svg>
+    YOV<span>.</span>
+  </div>
+  <div class="nav-sq"></div>
   <ul class="nav-menu">
     <li class="nav-link active" onclick="goTo(0)">Hero</li>
     <li class="nav-link" onclick="goTo(1)">About</li>
@@ -252,7 +269,7 @@ body.cur-hover #cur animate{background:#fff}
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat-item"><div class="sv"><span class="count" data-target="12">0</span><span>+</span></div><div class="sk">Years Experience</div></div>
+    <div class="stat-item"><div class="sv"><span class="count" data-target="13">0</span><span>+</span></div><div class="sk">Years Experience</div></div>
     <div class="stat-item"><div class="sv"><span class="count" data-target="70">0</span><span>%</span></div><div class="sk">Regression Cut</div></div>
     <div class="stat-item"><div class="sv"><span class="count" data-target="22">0</span></div><div class="sk">Team Members Led</div></div>
     <div class="stat-item"><div class="sv"><span class="count" data-target="3">0</span><span>&times;</span></div><div class="sk">Deploy Frequency</div></div>
@@ -265,10 +282,10 @@ body.cur-hover #cur animate{background:#fff}
     <span class="lbl">02 &middot; About</span>
     <h2 class="ttl"><span class="cw"><span class="ci">Testing beyond the </span></span><em>happy path.</em></h2>
     <div class="about-grid">
-      <div class="card tilt-wrap"><span class="card-lbl">Who I Am</span><p class="card-body">Lead SDET with <strong>12+ years</strong> building automation ecosystems from scratch[cite: 4, 12]. Acting QA Manager at Sprout Solutions leading <strong>11 SDETs + 11 QA engineers</strong> across the entire product org[cite: 19, 21, 22].</p></div>
-      <div class="card tilt-wrap"><span class="card-lbl">What Sets Me Apart</span><p class="card-body">I architect <strong>Agentic QA frameworks</strong> &mdash; Claude AI agents + MCP that read live Jira tickets, generate test cases, and execute them via Playwright autonomously without human intervention[cite: 5, 6, 11, 24, 25].</p></div>
-      <div class="card tilt-wrap"><span class="card-lbl">My Domain</span><p class="card-body">Deep expertise in <strong>HR &amp; Payroll systems</strong>: complex computation validation, multi-module regression, attendance engine logic, and API-driven data integrity across tightly-coupled business rules[cite: 27].</p></div>
-      <div class="card tilt-wrap"><span class="card-lbl">Leadership Style</span><p class="card-body">I champion <strong>automation-first culture</strong> &mdash; from no-code tools for non-technical QA (cutting dev time 40%) [cite: 28] to representing QA strategy in <strong>L10 executive meetings</strong> [cite: 23] and SAFe PI Planning[cite: 38].</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">Who I Am</span><p class="card-body">Lead SDET with <strong>13+ years</strong> building automation ecosystems from scratch. Acting QA Manager at Sprout Solutions leading <strong>11 SDETs + 11 QA engineers</strong> across the entire product org.</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">What Sets Me Apart</span><p class="card-body">I architect <strong>Agentic QA frameworks</strong> &mdash; Claude AI agents + MCP that read live Jira tickets, generate test cases, and execute them via Playwright autonomously without human intervention.</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">My Domain</span><p class="card-body">Deep expertise in <strong>HR &amp; Payroll systems</strong>: complex computation validation, multi-module regression, attendance engine logic, and API-driven data integrity across tightly-coupled business rules.</p></div>
+      <div class="card tilt-wrap"><span class="card-lbl">Leadership Style</span><p class="card-body">I champion <strong>automation-first culture</strong> &mdash; from no-code tools for non-technical QA (cutting dev time 40%) to representing QA strategy in <strong>L10 executive meetings</strong> and SAFe PI Planning.</p></div>
     </div>
   </div>
 </section>
@@ -296,7 +313,8 @@ body.cur-hover #cur animate{background:#fff}
     <h2 class="ttl" style="font-size:clamp(1.8rem,3.2vw,2.8rem);margin-bottom:28px"><span class="cw"><span class="ci">Where I&rsquo;ve </span></span><em>shipped quality.</em></h2>
     <div class="tl">
       <div class="tl-line"></div>
-      <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">APR 2024 &ndash; PRESENT</div><div class="tl-role">Lead SDET / Acting QA Manager</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Leading 22-person QA org[cite: 21]. Architecting Agentic QA (Claude + MCP + Playwright)[cite: 24]. Cut Payroll regression 17 min &rarr; 5 min enabling 3&times; deploy frequency[cite: 27]. Reduced Sales manual prep by 80%[cite: 29]. Representing quality roadmap in executive L10 meetings[cite: 23].</div></div>
+      <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">APR 2024 &ndash; PRESENT</div><div class="tl-role">Lead SDET / Acting QA Manager</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Leading 22-person QA org. Architecting Agentic QA (Claude + MCP + Playwright). Cut Payroll regression 17 min &rarr; 5 min enabling 3&times; deploy frequency. Reduced Sales manual prep by 80%. Representing quality roadmap in executive L10 meetings.</div></div>
+      <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">JAN 2026 &ndash; PRESENT</div><div class="tl-role">Founding Automation QA Engineer <span style="font-weight:400;color:var(--t2)">(Part-Time)</span></div><div class="tl-co">Legadel &mdash; New York, USA &middot; Remote</div><div class="tl-desc">Serving as the initial automation architect for a New York-based project. Establishing the automated testing roadmap, selecting core TCM tools, and building scalable automation scripts to validate core workflows on the Legadel platform. Collaborating with remote US-based dev teams to integrate automated checks and prevent regressions.</div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">SEPT 2019 &ndash; APR 2024</div><div class="tl-role">Senior Software Engineer &ndash; Automation Lead &amp; Trainer</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Built web &amp; mobile frameworks with Selenium (Java, Python) + Appium[cite: 33]. Created mobile pipeline cutting manual regression 40%[cite: 36]. Standardized coding practices[cite: 37]. Led QA in SAFe PI Planning[cite: 38].</div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">JUL 2018 &ndash; JUL 2019</div><div class="tl-role">Associate Consultant &ndash; Automation Tester &amp; Trainer</div><div class="tl-co">Capgemini Philippines</div><div class="tl-desc">Developed automation scripts from functional test cases[cite: 41]. Conducted Selenium training[cite: 42]. Built frameworks enhancing efficiency across multiple client engagements[cite: 43].</div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">FEB 2015 &ndash; JUL 2018</div><div class="tl-role">Software Engineer &ndash; Automation Test Lead</div><div class="tl-co">Accenture Philippines</div><div class="tl-desc">Led in-sprint automation in Agile teams[cite: 46]. Established automation guidelines and coding standards[cite: 47]. Drove defect triage and cross-team coordination for faster resolution[cite: 48].</div></div>
@@ -323,7 +341,7 @@ body.cur-hover #cur animate{background:#fff}
     <span class="lbl">06 &middot; Certifications</span>
     <h2 class="ttl"><span class="cw"><span class="ci">Always </span></span><em>learning.</em></h2>
     <div class="certs-grid">
-      <div class="ccard tilt-wrap"><span class="ci">&#127942;</span><div class="cn">Certified Tester Foundation Level</div><div class="cb">ISTQB &middot; CTFL</div></div>
+      <div class="ccard tilt-wrap"><span class="ci">&#127942;</span><div class="cn">Certified Tester Foundation Level</div><div class="cb">ISTQB &middot; CTFL</div><div class="cb" style="margin-top:4px;color:var(--t3)">December 2024</div></div>
       <div class="ccard tilt-wrap"><span class="ci">&#128260;</span><div class="cn">Agile Software Development</div><div class="cb">Training Certification</div></div>
       <div class="ccard tilt-wrap"><span class="ci">&#9749;</span><div class="cn">Java Cross-Skill Training</div><div class="cb">Professional Development</div></div>
       <div class="ccard tilt-wrap"><span class="ci">&#128013;</span><div class="cn">Python Fundamentals</div><div class="cb">Professional Development</div></div>
@@ -346,7 +364,7 @@ body.cur-hover #cur animate{background:#fff}
         <a href="mailto:yulomarvillanueva@gmail.com" class="ccard2"><span class="cci">&#9993;&#65039;</span><div><div class="clb">Email</div><div class="cvl">yulomarvillanueva@gmail.com</div></div></a>
         <a href="https://www.linkedin.com/in/yul-omar-villanueva-ctfl-7a15b5185/" target="_blank" class="ccard2"><span class="cci">&#128188;</span><div><div class="clb">LinkedIn</div><div class="cvl">yul-omar-villanueva-ctfl</div></div></a>
         <a href="https://github.com/omarvillanueva1234" target="_blank" class="ccard2"><span class="cci">&#8999;</span><div><div class="clb">GitHub</div><div class="cvl">omarvillanueva1234</div></div></a>
-        <div class="ccard2"><span class="cci">&#128205;</span><div><div class="clb">Location</div><div class="cvl">Pulilan, Bulacan, Philippines [cite: 2]</div></div></div>
+        <div class="ccard2"><span class="cci">&#128205;</span><div><div class="clb">Location</div><div class="cvl">Pulilan, Bulacan, Philippines</div></div></div>
       </div>
       <a href="Yul-Omar-Villanueva.pdf" download class="rcard">
         <div class="rleft"><span class="rico">&#128196;</span><div><div class="rtitle">Download Resume</div><div class="rsub">Yul-Omar-Villanueva.pdf &nbsp;&middot;&nbsp; Lead SDET &middot; ISTQB CTFL</div></div></div>
@@ -452,6 +470,45 @@ document.querySelectorAll('.tilt-wrap').forEach(c=>{
 })();
 
 bp.disabled=true;updateUI();heroEntrance();
+
+// Nav square highlighter
+anime({
+  targets: '.nav-sq',
+  translateX: [
+    { value: '17rem', duration: 700, delay: 400, easing: 'easeInOutSine' },
+    { value: 0,       duration: 700, delay: 800, easing: 'easeInOutSine' },
+  ],
+  translateY: [
+    { value: '-2.5rem', easing: 'easeOutSine', duration: 400 },
+    { value:  '2.5rem', duration: 800, delay: 700, easing: 'easeInOutSine' },
+    { value:  0,        easing: 'easeInSine',  duration: 400, delay: 700 },
+  ],
+  scale: [
+    { value: .5, duration: 700, delay: 400, easing: 'easeInOutSine' },
+    { value:  1, duration: 700, delay: 800, easing: 'easeInOutSine' },
+  ],
+  rotate: { value: 360, easing: 'linear', duration: 3000 },
+  loop: true,
+});
+
+// Nav logo SVG animation
+anime({
+  targets: ['#nav-distort feTurbulence', '#nav-distort feDisplacementMap'],
+  baseFrequency: .05,
+  scale: 15,
+  direction: 'alternate',
+  loop: true,
+  duration: 2000,
+  easing: 'easeInOutSine'
+});
+anime({
+  targets: '#nav-poly',
+  points: '64 68.64 8.574 100 63.446 67.68 64 4 64.554 67.68 119.426 100',
+  direction: 'alternate',
+  loop: true,
+  duration: 2000,
+  easing: 'easeInOutSine'
+});
 </script>
 </body>
 </html>
