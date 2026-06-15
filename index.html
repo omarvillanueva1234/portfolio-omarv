@@ -196,11 +196,34 @@ body.cur-hover #cur animate{background:#fff}
 .rbtn{padding:11px 22px;border-radius:10px;background:var(--ac);color:#fff;font-family:var(--fb);font-size:.9rem;font-weight:700;border:none;display:flex;align-items:center;gap:7px;white-space:nowrap;pointer-events:none}
 .fnote{font-family:var(--fm);font-size:.58rem;color:var(--t3);letter-spacing:.12em;margin-top:28px;opacity:0}
 
-/* MOBILE RESPONSIVE OPTIMIZATIONS */
+/* RESUME INLINE PREVIEW */
+.resume-peek{display:flex;justify-content:center;margin:0 auto 28px;opacity:0}
+.resume-peek img{height:220px;width:auto;border-radius:12px;border:1px solid var(--b1);box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 0 1px rgba(124,58,237,.1),0 0 24px rgba(124,58,237,.06);display:block}
+
+/* EXPERIENCE SLIDE SCROLLABLE */
+.exp-slide{overflow-y:auto !important;-webkit-overflow-scrolling:touch}
+.exp-slide::-webkit-scrollbar{width:3px}
+.exp-slide::-webkit-scrollbar-track{background:transparent}
+.exp-slide::-webkit-scrollbar-thumb{background:rgba(124,58,237,.35);border-radius:3px}
+.exp-slide::-webkit-scrollbar-thumb:hover{background:var(--ac)}
+
+/* TABLET RESPONSIVE (768px – 968px) */
 @media(max-width:968px){
   #nav{padding:16px 24px}
-  .nav-menu{display:none} 
+  .nav-menu{display:none}
+  .slide{padding:88px 36px 72px}
+  .ttl{font-size:clamp(1.9rem,4vw,2.8rem)}
+  .about-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .skills-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .proj-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .certs-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .cgrid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:20px}
+  .sv{font-size:2.2rem}
+  .tl{max-width:100%}
 }
+
+/* MOBILE RESPONSIVE (<768px) */
 @media(max-width:768px){
   .slide{
     padding:110px 22px 90px !important;
@@ -315,7 +338,7 @@ body.cur-hover #cur animate{background:#fff}
   </div>
 </section>
 
-<section class="slide" style="justify-content:flex-start;padding-top:92px">
+<section class="slide exp-slide" style="justify-content:flex-start;padding-top:92px">
   <div class="gbg"></div>
   <div class="si">
     <span class="lbl">04 &middot; Experience</span>
@@ -324,9 +347,9 @@ body.cur-hover #cur animate{background:#fff}
       <div class="tl-line"></div>
       <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">APR 2024 &ndash; PRESENT</div><div class="tl-role">Lead SDET / Acting QA Manager</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Leading 22-person QA org. Architecting Agentic QA (Claude + MCP + Playwright). Cut Payroll regression 17 min &rarr; 5 min enabling 3&times; deploy frequency. Reduced Sales manual prep by 80%. Representing quality roadmap in executive L10 meetings.</div></div>
       <div class="tl-item now"><div class="tl-dot"></div><div class="tl-period">JAN 2026 &ndash; PRESENT</div><div class="tl-role">Founding Automation QA Engineer <span style="font-weight:400;color:var(--t2)">(Part-Time)</span></div><div class="tl-co">Legadel &mdash; New York, USA &middot; Remote</div><div class="tl-desc">Serving as the initial automation architect for a New York-based project. Establishing the automated testing roadmap, selecting core TCM tools, and building scalable automation scripts to validate core workflows on the Legadel platform. Collaborating with remote US-based dev teams to integrate automated checks and prevent regressions.</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">SEPT 2019 &ndash; APR 2024</div><div class="tl-role">Senior Software Engineer &ndash; Automation Lead &amp; Trainer</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Built web &amp; mobile frameworks with Selenium (Java, Python) + Appium[cite: 33]. Created mobile pipeline cutting manual regression 40%[cite: 36]. Standardized coding practices[cite: 37]. Led QA in SAFe PI Planning[cite: 38].</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">JUL 2018 &ndash; JUL 2019</div><div class="tl-role">Associate Consultant &ndash; Automation Tester &amp; Trainer</div><div class="tl-co">Capgemini Philippines</div><div class="tl-desc">Developed automation scripts from functional test cases[cite: 41]. Conducted Selenium training[cite: 42]. Built frameworks enhancing efficiency across multiple client engagements[cite: 43].</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">FEB 2015 &ndash; JUL 2018</div><div class="tl-role">Software Engineer &ndash; Automation Test Lead</div><div class="tl-co">Accenture Philippines</div><div class="tl-desc">Led in-sprint automation in Agile teams[cite: 46]. Established automation guidelines and coding standards[cite: 47]. Drove defect triage and cross-team coordination for faster resolution[cite: 48].</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">SEPT 2019 &ndash; APR 2024</div><div class="tl-role">Senior Software Engineer &ndash; Automation Lead &amp; Trainer</div><div class="tl-co">Sprout Solutions</div><div class="tl-desc">Built web &amp; mobile frameworks with Selenium (Java, Python) + Appium. Created mobile pipeline cutting manual regression 40%. Standardized coding practices. Led QA in SAFe PI Planning.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">JUL 2018 &ndash; JUL 2019</div><div class="tl-role">Associate Consultant &ndash; Automation Tester &amp; Trainer</div><div class="tl-co">Capgemini Philippines</div><div class="tl-desc">Developed automation scripts from functional test cases. Conducted Selenium training. Built frameworks enhancing efficiency across multiple client engagements.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">FEB 2015 &ndash; JUL 2018</div><div class="tl-role">Software Engineer &ndash; Automation Test Lead</div><div class="tl-co">Accenture Philippines</div><div class="tl-desc">Led in-sprint automation in Agile teams. Established automation guidelines and coding standards. Drove defect triage and cross-team coordination for faster resolution.</div></div>
     </div>
   </div>
 </section>
@@ -368,6 +391,9 @@ body.cur-hover #cur animate{background:#fff}
     <div class="cwrap">
       <span class="lbl" style="text-align:center">07 &middot; Contact</span>
       <h2 class="ttl" style="text-align:center"><span class="cw"><span class="ci">Let&rsquo;s </span></span><em>connect.</em></h2>
+      <div class="resume-peek">
+        <img src="OmarVillanueva-Resume.png" alt="Yul Omar Villanueva Resume">
+      </div>
       <p class="cintro">Open to Lead SDET, QA Architecture, and engineering leadership opportunities. Let&rsquo;s build something intelligent together.</p>
       <div class="cgrid">
         <a href="mailto:yulomarvillanueva@gmail.com" class="ccard2"><span class="cci">&#9993;&#65039;</span><div><div class="clb">Email</div><div class="cvl">yulomarvillanueva@gmail.com</div></div></a>
@@ -435,6 +461,7 @@ function animSlide(idx){
   const cards=[...sl.querySelectorAll('.card,.pcard,.ccard,.ccard2')];
   if(cards.length)anime({targets:cards,translateY:[36,0],opacity:[0,1],delay:anime.stagger(70,{start:200}),duration:600,easing:'spring(1,80,12,0)'});
   const ci=sl.querySelector('.cintro');if(ci)anime({targets:ci,opacity:[0,1],translateY:[12,0],duration:600,easing:'easeOutExpo',delay:300});
+  const rp=sl.querySelector('.resume-peek');if(rp)anime({targets:rp,opacity:[0,1],translateY:[16,0],duration:700,easing:'easeOutExpo',delay:180});
   const rc=sl.querySelector('.rcard');if(rc)anime({targets:rc,opacity:[0,1],translateY:[16,0],duration:600,easing:'spring(1,80,10,0)',delay:500});
   const fn=sl.querySelector('.fnote');if(fn)anime({targets:fn,opacity:[0,1],duration:500,easing:'easeOutExpo',delay:700});
   const tli=sl.querySelectorAll('.tl-item');if(tli.length)anime({targets:tli,opacity:[0,1],translateX:[-16,0],delay:anime.stagger(80,{start:200}),duration:500,easing:'easeOutExpo'});
